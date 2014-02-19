@@ -18,7 +18,7 @@ nose==1.3.0	# testing facility
 # pdfminer==20110515
 pep8==1.4.6
 psycopg2==2.5.2
-pycairo==1.10.0
+# pycairo==1.10.0	# python graphics library
 pychecker==0.8.19
 pyflakes==0.7.3
 pylint==1.1.0
