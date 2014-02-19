@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/*
+	mapsndata.css
+		css for structures built by javascript here should go here
+		css for structures built by Tensor.php should go in the tensor directory
+
+	architecture for including css in extensions cleaner than in skins:
+		don't have to hack wiki code, see (high yuk factor (HYF)):
+			./installer/WebInstallerOutput.php:		$tensorCssFile = "$skinDir/tensor/screen.css";
+		can force reload using timestamp
+		-- ResourceLoader, when debug set, reloads changed files automagically
+
+	for right now, mapsndata.css is a placeholder
+		-- can save us from having to edit screen.css, which is more of a mediawiki file
+		-- best to edit that, actually, when working on the Tensor.php file, 
+			as it is physically closer to the Tensor.php file, 
+			easier to see what id goes where
+
+	validates as css 3 per http://jigsaw.w3.org/css-validator/validator
+
+	these are currently set to funky debugging colors, fix for final
+*/
+
+body {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+/*
+	bodyContent is the element that frames the wiki page content
+		-- contains some wiki pointers
+		-- contains bodyText (where map is defined)
+		-- contains the working area (<div id="map-0" class="map">),
+			controlset & components
+*/
+#bodyContent {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+/* bodyText is element that 1) contains xml for map & that 2) map is attached to */
+#bodyText {
+}
+
+/* probably want table to use collapse model, which I think it does by default */
+/*
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+tr, th, td {
+	border: 0px;
+	margin: 0px;
+}
+*/

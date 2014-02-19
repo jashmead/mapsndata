@@ -1,0 +1,14 @@
+alter SEQUENCE links_id_seq
+    START WITH 2946
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+alter SEQUENCE maps_id_seq
+    START WITH 2925
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+

@@ -1,0 +1,11 @@
+comment on table geographics is 'geographics -- postgis -- geometry data sources';
+comment on table links is 'manage linkages between map to source linkages as well as other, more complex';
+comment on table controls is 'manage controls per map';
+comment on table data_sets is '3rd simplest possible datasource: stores table for use in charts and so on';
+comment on table images is 'manage images & their file system storage; will need appropriate triggers';
+comment on table layers is 'a place holder to let you arbitrarily nest maps & other structures';
+comment on table lists is '2nd simplest possible datasource';
+comment on table maps is 'main table of database';
+comment on table points is 'simplest possible datasource';
+comment on table users is 'only drug dealers and programmers refer to the clients as users';
+comment on table viewpoints is 'how to look at a map';
