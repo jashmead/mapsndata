@@ -9,8 +9,13 @@
 #   check out the standard logger module & use a logger configuration file
 # currently session, g not used; in a bit
 # the Flask class is our WSGI (& Werkzeug) app
+
 from flask import Flask, url_for, render_template, request, session, redirect, escape
+from flask.ext.sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
 
 @app.route('/')
 def index():

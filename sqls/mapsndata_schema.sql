@@ -37,20 +37,6 @@ CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
 COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
 
 
---
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
-
-
 SET search_path = public, pg_catalog;
 
 --
@@ -364,34 +350,6 @@ CREATE SEQUENCE geographics_id_seq
 ALTER TABLE public.geographics_id_seq OWNER TO mapsndata;
 
 --
--- Name: geographics; Type: TABLE; Schema: public; Owner: mapsndata; Tablespace: 
---
-
-CREATE TABLE geographics (
-    id integer DEFAULT nextval('geographics_id_seq'::regclass) NOT NULL,
-    geograph_type type_t DEFAULT ''::character varying NOT NULL,
-    name name NOT NULL,
-    title title_t,
-    created_on datetime_t,
-    created_by user_id_t,
-    updated_on datetime_t,
-    updated_by user_id_t,
-    attributes attribute_t,
-    description desc_t,
-    geograph geometry
-);
-
-
-ALTER TABLE public.geographics OWNER TO mapsndata;
-
---
--- Name: TABLE geographics; Type: COMMENT; Schema: public; Owner: mapsndata
---
-
-COMMENT ON TABLE geographics IS 'geographics -- postgis -- geometry data sources';
-
-
---
 -- Name: images_id_seq; Type: SEQUENCE; Schema: public; Owner: mapsndata
 --
 
@@ -479,7 +437,7 @@ COMMENT ON TABLE layers IS 'a place holder to let you arbitrarily nest maps & ot
 --
 
 CREATE SEQUENCE links_id_seq
-    START WITH 2946
+    START WITH 3000
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -562,7 +520,7 @@ COMMENT ON TABLE lists IS '2nd simplest possible datasource';
 --
 
 CREATE SEQUENCE maps_id_seq
-    START WITH 2925
+    START WITH 3000
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -761,14 +719,6 @@ ALTER TABLE ONLY data_sets
 
 
 --
--- Name: geographics_pkey; Type: CONSTRAINT; Schema: public; Owner: mapsndata; Tablespace: 
---
-
-ALTER TABLE ONLY geographics
-    ADD CONSTRAINT geographics_pkey PRIMARY KEY (id);
-
-
---
 -- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: mapsndata; Tablespace: 
 --
 
@@ -882,20 +832,6 @@ CREATE TRIGGER data_sets_trg_link_delete BEFORE DELETE ON data_sets FOR EACH ROW
 --
 
 CREATE TRIGGER data_sets_update_trg BEFORE UPDATE ON data_sets FOR EACH ROW EXECUTE PROCEDURE updated_on_func();
-
-
---
--- Name: geographics_trg_link_delete; Type: TRIGGER; Schema: public; Owner: mapsndata
---
-
-CREATE TRIGGER geographics_trg_link_delete BEFORE DELETE ON geographics FOR EACH ROW EXECUTE PROCEDURE link_delete();
-
-
---
--- Name: geographics_update_trg; Type: TRIGGER; Schema: public; Owner: mapsndata
---
-
-CREATE TRIGGER geographics_update_trg BEFORE UPDATE ON geographics FOR EACH ROW EXECUTE PROCEDURE updated_on_func();
 
 
 --
@@ -1047,22 +983,6 @@ ALTER TABLE ONLY data_sets
 
 ALTER TABLE ONLY data_sets
     ADD CONSTRAINT data_sets_updated_by_fkey FOREIGN KEY (updated_by) REFERENCES users(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
-
-
---
--- Name: geographics_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mapsndata
---
-
-ALTER TABLE ONLY geographics
-    ADD CONSTRAINT geographics_created_by_fkey FOREIGN KEY (created_by) REFERENCES users(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
-
-
---
--- Name: geographics_updated_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mapsndata
---
-
-ALTER TABLE ONLY geographics
-    ADD CONSTRAINT geographics_updated_by_fkey FOREIGN KEY (updated_by) REFERENCES users(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
 --

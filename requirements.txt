@@ -1,8 +1,11 @@
 Flask==0.10.1
+# do we need the Flask-MoreSQL & Flask-Psycopg2? given we are using Flask-SQLAlchemy?
 Flask-MoreSQL==0.4
 Flask-Psycopg2==1.2
+Flask-SQLAlchemy==1.0
 Jinja2==2.7.2
 MarkupSafe==0.18
+SQLAlchemy==0.9.2
 Werkzeug==0.9.4
 # adsbibdesk==3.1
 # arxiv2bib==1.0.3

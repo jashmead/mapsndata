@@ -6,7 +6,7 @@
 project	= mapsndata
 browser = Firefox.app
 url = "http://127.0.0.1"
-port = 5000
+port = 8000
 page = $(url):$(port)/
 
 include ../common/rules.mk
